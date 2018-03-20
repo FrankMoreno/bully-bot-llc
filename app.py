@@ -10,7 +10,8 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def webserver():
     data = request.get_json()
-    if (data['name'] != 'Bully' and data['name'] != 'GroupMe'):
+    if (data['text'][0:7]).lower() == "google:":
+    #if (data['name'] != 'Bully' and data['name'] != 'GroupMe'):
         createMessage(data)
     return "ok", 200
 
@@ -25,7 +26,7 @@ def createMessage(data):
                 'text' : "Shut up " + data['name'],
                 'bot_id' :  os.getenv('GROUPME_BOT_ID'),
             }
-            
+
     time.sleep(1)
     r = requests.post(postUrl, data = payload, verify=True)
 
