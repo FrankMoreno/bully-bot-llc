@@ -15,14 +15,13 @@ def webserver():
 
 @app.route('/', methods=['GET'])
 def simpleCheck():
-    r = requests.post("https://bully-bot-llc.herokuapp.com", data = {"var 1":"value", "var 2":"value"}, verify=True)
     return "Web Server is up."
 
 def createMessage(data):
     postUrl = 'https://api.groupme.com/v3/bots/post'
 
     payload = {
-                'text' : "Shut up" + data['name'],
+                'text' : "Shut up " + data['name'],
                 'bot_id' :  os.getenv('GROUPME_BOT_ID'),
             }
 
