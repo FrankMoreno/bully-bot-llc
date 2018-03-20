@@ -25,7 +25,7 @@ def createMessage(data):
                 'bot_id' :  os.getenv('GROUPME_GOT_ID'),
             }
 
-    r = requests.post(postUrl, data = payload)
+    r = requests.post(postUrl, data = payload, verify=True)
 
 
 
