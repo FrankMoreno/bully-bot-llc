@@ -23,7 +23,7 @@ def createMessage(data):
 
     payload = {
                 'text' : "Shut up", #+ data['name']
-                'bot_id' :  os.getenv('GROUPME_GOT_ID'),
+                'bot_id' :  os.getenv('GROUPME_BOT_ID'),
             }
 
     r = requests.post(postUrl, data = payload, verify=True)
