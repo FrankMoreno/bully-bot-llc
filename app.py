@@ -9,8 +9,8 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def webserver():
     data = request.get_json()
-    if data['name'] != 'Bully':
-        createMessage(data)
+    #if data['name'] != 'Bully':
+    createMessage(data)
     return "ok", 200
 
 @app.route('/', methods=['GET'])
