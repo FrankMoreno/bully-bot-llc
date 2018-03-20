@@ -11,19 +11,18 @@ app = Flask(__name__)
 def webserver():
     data = request.get_json()
     if (data['text'][0:7]).lower() == "google:":
-    #if (data['name'] != 'Bully' and data['name'] != 'GroupMe'):
-        createMessage(data)
+        createMessage(data['text'][7:])
     return "ok", 200
 
 @app.route('/', methods=['GET'])
 def simpleCheck():
     return "Web Server is up."
 
-def createMessage(data):
+def createMessage(searchTerm):
     postUrl = 'https://api.groupme.com/v3/bots/post'
 
     payload = {
-                'text' : "Shut up " + data['name'],
+                'text' : searchTerm,
                 'bot_id' :  os.getenv('GROUPME_BOT_ID'),
             }
 
