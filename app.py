@@ -10,9 +10,14 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def webserver():
     data = request.get_json()
-    #if data['name'] != 'Bully':
-    createMessage(data)
+    if data['name'] != 'Bully':
+        createMessage(data)
     return "ok", 200
+
+@app.route('/', methods=['GET'])
+def simpleCheck():
+    request = requests.post("https://bully-bot-llc.herokuapp.com/", "name:frank")
+
 
 def createMessage(data):
     postUrl = 'https://api.groupme.com/v3/bots/post'
@@ -22,13 +27,7 @@ def createMessage(data):
                 'bot_id' :  os.getenv('GROUPME_GOT_ID'),
             }
 
-    request = requests.post(postUrl, payload)
-    #json = urlopen(request).read().decode()
-
-@app.route('/', methods=['GET'])
-def simpleCheck():
-    request = requests.post("https://git.heroku.com/bully-bot-llc.git", "name:frank")
-
+    requests.post(postUrl, payload)
 
 
 
