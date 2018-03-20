@@ -15,8 +15,8 @@ def webserver():
 
 @app.route('/', methods=['GET'])
 def simpleCheck():
-    #return "You're ugly"
-    request = requests.post("https://bully-bot-llc.herokuapp.com/", "name:frank")
+    return "You're ugly"
+    #request = requests.post("https://bully-bot-llc.herokuapp.com/", "name:frank")
 
 
 def createMessage(data):
