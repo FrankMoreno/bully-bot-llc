@@ -15,9 +15,8 @@ def webserver():
 
 @app.route('/', methods=['GET'])
 def simpleCheck():
+    r = requests.post('https://bully-bot-llc.herokuapp.com/', data = {'name':'Frank Moreno'})
     return "You're ugly"
-    #request = requests.post("https://bully-bot-llc.herokuapp.com/", "name:frank")
-
 
 def createMessage(data):
     postUrl = 'https://api.groupme.com/v3/bots/post'
