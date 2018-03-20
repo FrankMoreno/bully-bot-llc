@@ -1,5 +1,6 @@
 import os
 import json
+import time
 
 from flask import Flask, request
 import requests
@@ -9,7 +10,7 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def webserver():
     data = request.get_json()
-    if data['name'] != 'Bully':
+    if (data['name'] != 'Bully' and data['name'] != 'GroupMe'):
         createMessage(data)
     return "ok", 200
 
@@ -24,8 +25,10 @@ def createMessage(data):
                 'text' : "Shut up " + data['name'],
                 'bot_id' :  os.getenv('GROUPME_BOT_ID'),
             }
-
+            
+    time.sleep(1)
     r = requests.post(postUrl, data = payload, verify=True)
+
 
 
 
