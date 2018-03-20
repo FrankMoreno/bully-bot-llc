@@ -15,7 +15,7 @@ def webserver():
 
 @app.route('/', methods=['GET'])
 def simpleCheck():
-    r = requests.post("https://bully-bot-llc.herokuapp.com/", data = {"var 1":"value", "var 2":"value"}, verify=True)
+    r = requests.post("https://bully-bot-llc.herokuapp.com", data = {"var 1":"value", "var 2":"value"}, verify=True)
     return "Web Server is up."
 
 def createMessage(data):
