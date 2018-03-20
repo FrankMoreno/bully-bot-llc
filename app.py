@@ -2,7 +2,7 @@ import os
 import json
 
 from flask import Flask, request
-import requests
+#import requests
 
 app = Flask(__name__)
 
@@ -13,9 +13,9 @@ def webserver():
         createMessage(data)
     return "ok", 200
 
-@app.route('/', methods=['GET'])
-def simpleCheck():
-    request = requests.post("https://bully-bot-llc.herokuapp.com/", "name:frank")
+#@app.route('/', methods=['GET'])
+#def simpleCheck():
+#    request = requests.post("https://bully-bot-llc.herokuapp.com/", "name:frank")
 
 
 def createMessage(data):
@@ -26,7 +26,8 @@ def createMessage(data):
                 'bot_id' :  os.getenv('GROUPME_GOT_ID'),
             }
 
-    requests.post(postUrl, payload)
+    print("Working maybe")
+#    requests.post(postUrl, payload)
 
 
 
