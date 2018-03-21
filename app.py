@@ -11,7 +11,8 @@ app = Flask(__name__)
 def webserver():
     data = request.get_json()
     if (data['text'][0:7]).lower() == "google:":
-        createMessage(data['text'][7:])
+        searchTerm = createSearchTerm(data['text'][7:])
+        createMessage(searchTerm)
     return "ok", 200
 
 @app.route('/', methods=['GET'])
@@ -28,6 +29,17 @@ def createMessage(searchTerm):
 
     time.sleep(1)
     r = requests.post(postUrl, data = payload, verify=True)
+
+def createSearchTerm(data):
+    terms = data.split()
+    search = ""
+    for term in terms:
+        search = search + term + "+"
+    return search
+
+
+
+
 
 
 
