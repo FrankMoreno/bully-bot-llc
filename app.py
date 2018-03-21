@@ -35,6 +35,7 @@ def createSearchTerm(data):
     search = ""
     for term in terms:
         search = search + term + "+"
+    search = "https://www.google.com/search?q="+search
     return search
 
 
