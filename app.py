@@ -7,6 +7,10 @@ import requests
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def simpleCheck():
+    return "Web Server is up."
+    
 @app.route('/', methods=['POST'])
 def webserver():
     data = request.get_json()
@@ -14,10 +18,6 @@ def webserver():
         searchTerm = createSearchTerm(data['text'][7:])
         createMessage(searchTerm)
     return "ok", 200
-
-@app.route('/', methods=['GET'])
-def simpleCheck():
-    return "Web Server is up."
 
 def createMessage(searchTerm):
     postUrl = 'https://api.groupme.com/v3/bots/post'
