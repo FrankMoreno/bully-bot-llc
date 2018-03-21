@@ -10,11 +10,11 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def simpleCheck():
     return "Web Server is up."
-    
+
 @app.route('/', methods=['POST'])
 def webserver():
     data = request.get_json()
-    if (data['text'][0:7]).lower() == "google:":
+    if (data['text'][0:7]).lower() == "@google":
         searchTerm = createSearchTerm(data['text'][7:])
         createMessage(searchTerm)
     return "ok", 200
