@@ -12,6 +12,11 @@ app = Flask(__name__)
 def simpleCheck():
     return "Web Server is up."
 
+@app.route('/transaction', methods=['POST'])
+def makeTransaction():
+    data = request.get_json()
+    return data
+
 #GroupMe will POST to url every time message is received in chat
 @app.route('/', methods=['POST']) 
 def webserver():
