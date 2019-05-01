@@ -14,7 +14,7 @@ def simpleCheck():
 
 @app.route('/transaction', methods=['POST'])
 def makeTransaction():
-    data = request.get_json()
+    data = request.data()
     return data
 
 #GroupMe will POST to url every time message is received in chat
